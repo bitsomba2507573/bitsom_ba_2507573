@@ -116,3 +116,42 @@ def validate_and_filter(transactions, region=None, min_amount=None, max_amount=N
     }
 
     return filtered_transactions, invalid_count, summary
+
+# Task 2.1: Total Revenue
+def calculate_total_revenue(transactions):
+    total = 0.0
+    for t in transactions:
+        total += t['Quantity'] * t['UnitPrice']
+    return total
+
+
+# Task 2.2: Revenue by Region
+def calculate_revenue_by_region(transactions):
+    revenue_by_region = {}
+    for t in transactions:
+        region = t['Region']
+        revenue = t['Quantity'] * t['UnitPrice']
+        revenue_by_region[region] = revenue_by_region.get(region, 0) + revenue
+    return revenue_by_region
+
+
+# Task 2.b: Region-wise Sales Analysis
+def region_wise_sales(transactions):
+    stats = {}
+    total_sales_all = 0.0
+
+    # Calculate total sales and transaction count per region
+    for t in transactions:
+        region = t['Region']
+        sale_amount = t['Quantity'] * t['UnitPrice']
+        if region not in stats:
+            stats[region] = {'total_sales': 0.0, 'transaction_count': 0}
+        stats[region]['total_sales'] += sale_amount
+        stats[region]['transaction_count'] += 1
+        total_sales_all += sale_amount
+
+    # Calculate percentage contribution
+    for region in stats:
+        stats[region]['percentage'] = round((stats[region]['total_sales'] / total_sales_all) * 100, 2)
+
+    return stats
