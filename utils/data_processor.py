@@ -155,3 +155,33 @@ def region_wise_sales(transactions):
         stats[region]['percentage'] = round((stats[region]['total_sales'] / total_sales_all) * 100, 2)
 
     return stats
+
+def top_selling_products(transactions, n=5):
+    """
+    Finds top n products by total quantity sold
+    Returns: list of tuples (ProductName, TotalQuantity, TotalRevenue)
+    """
+    product_stats = {}
+
+    # Aggregate totals per product
+    for t in transactions:
+        name = t['ProductName']
+        qty = t['Quantity']
+        revenue = t['Quantity'] * t['UnitPrice']
+
+        if name not in product_stats:
+            product_stats[name] = {'total_qty': 0, 'total_revenue': 0.0}
+        product_stats[name]['total_qty'] += qty
+        product_stats[name]['total_revenue'] += revenue
+
+    # Convert to list of tuples
+    product_list = [
+        (name, data['total_qty'], data['total_revenue'])
+        for name, data in product_stats.items()
+    ]
+
+    # Sort by total quantity descending
+    product_list.sort(key=lambda x: x[1], reverse=True)
+
+    # Return top n
+    return product_list[:n]

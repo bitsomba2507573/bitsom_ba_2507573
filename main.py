@@ -3,7 +3,8 @@ from utils.data_processor import (
     validate_and_filter,
     calculate_total_revenue,
     calculate_revenue_by_region,
-    region_wise_sales
+    region_wise_sales,
+    top_selling_products
 )
 
 DATA_PATH = "data/sales_data.txt"
@@ -57,7 +58,13 @@ def main():
     for region, data in region_stats.items():
         print(f"{region}: Total Sales={data['total_sales']}, Transactions={data['transaction_count']}, Percentage={data['percentage']}%")
 
-    # Step 6: Save output to file
+    # Step 6: Top Selling Products
+    top_products = top_selling_products(valid_transactions, n=5)
+    print("\nTop Selling Products:")
+    for name, qty, revenue in top_products:
+        print(f"{name}: Quantity Sold={qty}, Total Revenue={revenue}")
+
+    # Step 7: Save output to file
     with open(OUTPUT_PATH, "w") as f:
         f.write(f"Total Transactions: {len(valid_transactions)}\n")
         f.write(f"Total Revenue: {total_revenue}\n\n")
@@ -67,6 +74,9 @@ def main():
         f.write("\nRegion-wise Sales Analysis:\n")
         for region, data in region_stats.items():
             f.write(f"{region}: Total Sales={data['total_sales']}, Transactions={data['transaction_count']}, Percentage={data['percentage']}%\n")
+        f.write("\nTop Selling Products:\n")
+        for name, qty, revenue in top_products:
+            f.write(f"{name}: Quantity Sold={qty}, Total Revenue={revenue}\n")
 
     print(f"\nSummary saved to {OUTPUT_PATH}")
     print("Sales report generated successfully.")
