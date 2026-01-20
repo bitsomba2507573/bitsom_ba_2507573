@@ -1,79 +1,8 @@
 Total Transactions: 70
 Total Revenue: 3527808.0
 
-Revenue by Region:
-South: 889332.0
-East: 467969.0
-North: 1321605.0
-West: 848902.0
-
-Region-wise Sales Analysis:
-South: Total Sales=889332.0, Transactions=13, Percentage=25.21%
-East: Total Sales=467969.0, Transactions=17, Percentage=13.27%
-North: Total Sales=1321605.0, Transactions=21, Percentage=37.46%
-West: Total Sales=848902.0, Transactions=19, Percentage=24.06%
-
-Top Selling Products:
-Mouse: Quantity Sold=61, Total Revenue=40297.0
-Wireless Mouse: Quantity Sold=45, Total Revenue=49981.0
-Webcam: Quantity Sold=35, Total Revenue=128187.0
-USB Cable: Quantity Sold=33, Total Revenue=7622.0
-Monitor: Quantity Sold=30, Total Revenue=493759.0
-
-Customer Purchase Analysis:
-C004: Total Spent=857124.0, Purchases=3, Avg Order=285708.0, Products=['LaptopPremium', 'Laptop Charger', 'Headphones']
-C017: Total Spent=762460.0, Purchases=1, Avg Order=762460.0, Products=['LaptopPremium']
-C010: Total Spent=457186.0, Purchases=3, Avg Order=152395.33, Products=['MouseWireless', 'External Hard Drive1TB', 'LaptopPremium']
-C024: Total Spent=249451.0, Purchases=2, Avg Order=124725.5, Products=['Monitor', 'MonitorLED']
-C008: Total Spent=216176.0, Purchases=5, Avg Order=43235.2, Products=['Wireless Mouse', 'Laptop', 'Laptop Charger', 'Monitor', 'Mouse']
-C023: Total Spent=165391.0, Purchases=2, Avg Order=82695.5, Products=['Webcam', 'Monitor']
-C003: Total Spent=118144.0, Purchases=3, Avg Order=39381.33, Products=['Wireless Mouse', 'LaptopPremium', 'Mouse']
-C005: Total Spent=112405.0, Purchases=4, Avg Order=28101.25, Products=['Wireless MouseGaming', 'Laptop Charger', 'Monitor', 'Mouse']
-C013: Total Spent=75919.0, Purchases=3, Avg Order=25306.33, Products=['USB Cable', 'Laptop', 'Webcam']
-C009: Total Spent=64707.0, Purchases=6, Avg Order=10784.5, Products=['USB Cable', 'Wireless Mouse', 'Keyboard', 'Mouse', 'Headphones', 'WebcamHD']
-C007: Total Spent=57317.0, Purchases=4, Avg Order=14329.25, Products=['USB Cable', 'Wireless MouseGaming', 'Webcam', 'Mouse']
-C019: Total Spent=56358.0, Purchases=3, Avg Order=18786.0, Products=['Laptop Charger65W', 'Mouse', 'MonitorLED']
-C020: Total Spent=51695.0, Purchases=1, Avg Order=51695.0, Products=['Monitor']
-C028: Total Spent=48359.0, Purchases=2, Avg Order=24179.5, Products=['Keyboard', 'Headphones']
-C022: Total Spent=45778.0, Purchases=5, Avg Order=9155.6, Products=['Wireless Mouse', 'USB Cable', 'Laptop Charger', 'Webcam']
-C002: Total Spent=34218.0, Purchases=1, Avg Order=34218.0, Products=['External Hard Drive']
-C012: Total Spent=29735.0, Purchases=3, Avg Order=9911.67, Products=['USB Cable', 'External Hard Drive', 'Mouse']
-C006: Total Spent=24360.0, Purchases=1, Avg Order=24360.0, Products=['External Hard Drive1TB']
-C011: Total Spent=24144.0, Purchases=3, Avg Order=8048.0, Products=['Wireless Mouse', 'KeyboardMechanical', 'Mouse']
-C025: Total Spent=23148.0, Purchases=3, Avg Order=7716.0, Products=['Webcam', 'Mouse', 'Headphones']
-C001: Total Spent=11574.0, Purchases=1, Avg Order=11574.0, Products=['Webcam']
-C018: Total Spent=10152.0, Purchases=1, Avg Order=10152.0, Products=['Wireless Mouse']
-C026: Total Spent=10012.0, Purchases=2, Avg Order=5006.0, Products=['Laptop Charger', 'Mouse']
-C015: Total Spent=6330.0, Purchases=2, Avg Order=3165.0, Products=['Wireless Mouse', 'Laptop Charger']
-C029: Total Spent=6238.0, Purchases=3, Avg Order=2079.33, Products=['USB Cable', 'Wireless Mouse', 'Webcam']
-C030: Total Spent=4617.0, Purchases=1, Avg Order=4617.0, Products=['Wireless Mouse']
-C014: Total Spent=2560.0, Purchases=1, Avg Order=2560.0, Products=['MouseWireless']
-C027: Total Spent=2250.0, Purchases=1, Avg Order=2250.0, Products=['USB Cable']
-
-Daily Sales Trend:
-2024-12-01: Revenue=123969.0, Transactions=3, Unique Customers=2
-2024-12-02: Revenue=882906.0, Transactions=5, Unique Customers=5
-2024-12-03: Revenue=61851.0, Transactions=5, Unique Customers=5
-2024-12-05: Revenue=257.0, Transactions=1, Unique Customers=1
-2024-12-06: Revenue=34072.0, Transactions=1, Unique Customers=1
-2024-12-07: Revenue=204912.0, Transactions=10, Unique Customers=7
-2024-12-08: Revenue=70383.0, Transactions=3, Unique Customers=3
-2024-12-09: Revenue=25339.0, Transactions=4, Unique Customers=4
-2024-12-10: Revenue=1550.0, Transactions=1, Unique Customers=1
-2024-12-11: Revenue=13207.0, Transactions=2, Unique Customers=2
-2024-12-13: Revenue=417923.0, Transactions=3, Unique Customers=3
-2024-12-14: Revenue=45349.0, Transactions=2, Unique Customers=2
-2024-12-15: Revenue=818960.0, Transactions=1, Unique Customers=1
-2024-12-16: Revenue=3020.0, Transactions=1, Unique Customers=1
-2024-12-17: Revenue=114356.0, Transactions=1, Unique Customers=1
-2024-12-18: Revenue=81284.0, Transactions=2, Unique Customers=1
-2024-12-20: Revenue=594.0, Transactions=1, Unique Customers=1
-2024-12-21: Revenue=25992.0, Transactions=1, Unique Customers=1
-2024-12-22: Revenue=89645.0, Transactions=6, Unique Customers=6
-2024-12-23: Revenue=768.0, Transactions=1, Unique Customers=1
-2024-12-24: Revenue=161907.0, Transactions=4, Unique Customers=4
-2024-12-25: Revenue=30455.0, Transactions=4, Unique Customers=4
-2024-12-26: Revenue=34218.0, Transactions=1, Unique Customers=1
-2024-12-27: Revenue=119313.0, Transactions=2, Unique Customers=2
-2024-12-29: Revenue=5608.0, Transactions=2, Unique Customers=2
-2024-12-30: Revenue=159970.0, Transactions=3, Unique Customers=3
+Region-wise Sales:
+South: {'total_sales': 889332.0, 'transaction_count': 13, 'percentage': 25.21}
+East: {'total_sales': 467969.0, 'transaction_count': 17, 'percentage': 13.27}
+North: {'total_sales': 1321605.0, 'transaction_count': 21, 'percentage': 37.46}
+West: {'total_sales': 848902.0, 'transaction_count': 19, 'percentage': 24.06}

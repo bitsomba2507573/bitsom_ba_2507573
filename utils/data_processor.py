@@ -253,3 +253,62 @@ def daily_sales_trend(transactions):
     daily_stats = dict(sorted(daily_stats.items(), key=lambda x: x[0]))
 
     return daily_stats
+
+
+def find_peak_sales_day(transactions):
+    """
+    Identifies the date with highest revenue
+    Returns: tuple (date, revenue, transaction_count)
+    """
+
+    daily_data = {}
+
+    for t in transactions:
+        date = t['Date']
+        revenue = t['Quantity'] * t['UnitPrice']
+
+        if date not in daily_data:
+            daily_data[date] = {
+                'revenue': 0.0,
+                'transaction_count': 0
+            }
+
+        daily_data[date]['revenue'] += revenue
+        daily_data[date]['transaction_count'] += 1
+
+    peak_date = None
+    max_revenue = 0.0
+    peak_transactions = 0
+
+    for date, data in daily_data.items():
+        if data['revenue'] > max_revenue:
+            max_revenue = data['revenue']
+            peak_date = date
+            peak_transactions = data['transaction_count']
+
+    return (peak_date, round(max_revenue, 2), peak_transactions)
+
+
+def low_performing_products(transactions, threshold=10):
+    product_summary = {}
+
+    for t in transactions:
+        name = t['ProductName']
+        quantity = t['Quantity']
+        revenue = t['Quantity'] * t['UnitPrice']
+
+        if name not in product_summary:
+            product_summary[name] = [0, 0.0]
+
+        product_summary[name][0] += quantity
+        product_summary[name][1] += revenue
+
+    low_products = []
+
+    for name, values in product_summary.items():
+        if values[0] < threshold:
+            low_products.append((name, values[0], values[1]))
+
+    low_products.sort(key=lambda x: x[1])
+
+    return low_products
