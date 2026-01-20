@@ -12,6 +12,8 @@ from utils.data_processor import (
     save_enriched_data
 )
 from utils.api_handler import fetch_all_products, create_product_mapping
+from utils.report_generator import generate_sales_report
+
 
 
 # ===================== MAIN FUNCTION =====================
@@ -95,6 +97,8 @@ def main():
     # ---------- TASK 3.2: Enrich Sales Data ----------
     enriched_transactions = enrich_sales_data(transactions, product_mapping)
     save_enriched_data(enriched_transactions)
+    generate_sales_report(transactions, enriched_transactions)
+
 
     print("Enriched sales data saved successfully.")
     print("\nALL TASKS COMPLETED SUCCESSFULLY ✅")
