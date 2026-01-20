@@ -1,10 +1,12 @@
 from utils.file_handler import read_and_clean_sales_data
-from utils.data_processor import validate_and_filter
+from utils.data_processor import validate_and_filter, calculate_total_revenue, calculate_revenue_by_region
+
+DATA_PATH = "data/sales_data.txt"
+OUTPUT_PATH = "output/final_summary.txt"
 
 def main():
     # Step 1: Read and clean sales data
-    filename = "data/sales_data.txt"
-    cleaned_data = read_and_clean_sales_data(filename)
+    cleaned_data = read_and_clean_sales_data(DATA_PATH)
 
     if not cleaned_data:
         print("No valid data to process.")
@@ -25,7 +27,7 @@ def main():
         }
         transactions.append(transaction)
 
-    print(f"Valid records after parsing: {len(transactions)}")
+    print(f"Valid records after parsing: {len(transactions)}\n")
 
     # Step 3: Validate and filter transactions
     valid_transactions, invalid_count, summary = validate_and_filter(transactions)
@@ -33,33 +35,28 @@ def main():
     print(f"Invalid records removed during validation: {invalid_count}")
     print(f"Valid records after validation: {len(valid_transactions)}\n")
 
-    # Step 4: Generate summary stats
-    total_revenue = sum(t['Quantity'] * t['UnitPrice'] for t in valid_transactions)
+    # Step 4: Generate summary stats using Task 2 functions
+    total_revenue = calculate_total_revenue(valid_transactions)
+    revenue_by_region = calculate_revenue_by_region(valid_transactions)
+
     print(f"Total Transactions: {len(valid_transactions)}")
     print(f"Total Revenue: {total_revenue}\n")
-
-    # Revenue by Region
-    revenue_by_region = {}
-    for t in valid_transactions:
-        region = t['Region']
-        revenue = t['Quantity'] * t['UnitPrice']
-        revenue_by_region[region] = revenue_by_region.get(region, 0) + revenue
 
     print("Revenue by Region:")
     for region, revenue in revenue_by_region.items():
         print(f"{region}: {revenue}")
 
     # Step 5: Save output to file
-    output_file = "output/final_summary.txt"
-    with open(output_file, "w") as f:
+    with open(OUTPUT_PATH, "w") as f:
         f.write(f"Total Transactions: {len(valid_transactions)}\n")
         f.write(f"Total Revenue: {total_revenue}\n\n")
         f.write("Revenue by Region:\n")
         for region, revenue in revenue_by_region.items():
             f.write(f"{region}: {revenue}\n")
 
-    print(f"\nSummary saved to {output_file}")
+    print(f"\nSummary saved to {OUTPUT_PATH}")
     print("Sales report generated successfully.")
+
 
 if __name__ == "__main__":
     main()
