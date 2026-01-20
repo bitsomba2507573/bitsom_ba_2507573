@@ -4,7 +4,8 @@ from utils.data_processor import (
     calculate_total_revenue,
     calculate_revenue_by_region,
     region_wise_sales,
-    top_selling_products
+    top_selling_products,
+    customer_analysis
 )
 
 DATA_PATH = "data/sales_data.txt"
@@ -64,7 +65,13 @@ def main():
     for name, qty, revenue in top_products:
         print(f"{name}: Quantity Sold={qty}, Total Revenue={revenue}")
 
-    # Step 7: Save output to file
+    # Step 7: Customer Purchase Analysis
+    customer_stats = customer_analysis(valid_transactions)
+    print("\nCustomer Purchase Analysis:")
+    for cust_id, stats in customer_stats.items():
+        print(f"{cust_id}: Total Spent={stats['total_spent']}, Purchases={stats['purchase_count']}, Avg Order={stats['avg_order_value']}, Products={stats['products_bought']}")
+
+    # Step 8: Save output to file
     with open(OUTPUT_PATH, "w") as f:
         f.write(f"Total Transactions: {len(valid_transactions)}\n")
         f.write(f"Total Revenue: {total_revenue}\n\n")
@@ -77,6 +84,9 @@ def main():
         f.write("\nTop Selling Products:\n")
         for name, qty, revenue in top_products:
             f.write(f"{name}: Quantity Sold={qty}, Total Revenue={revenue}\n")
+        f.write("\nCustomer Purchase Analysis:\n")
+        for cust_id, stats in customer_stats.items():
+            f.write(f"{cust_id}: Total Spent={stats['total_spent']}, Purchases={stats['purchase_count']}, Avg Order={stats['avg_order_value']}, Products={stats['products_bought']}\n")
 
     print(f"\nSummary saved to {OUTPUT_PATH}")
     print("Sales report generated successfully.")

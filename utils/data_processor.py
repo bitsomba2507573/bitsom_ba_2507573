@@ -185,3 +185,37 @@ def top_selling_products(transactions, n=5):
 
     # Return top n
     return product_list[:n]
+
+def customer_analysis(transactions):
+    """
+    Analyzes customer purchase patterns
+    Returns: dictionary {CustomerID: {total_spent, purchase_count, avg_order_value, products_bought}}
+    """
+    customer_stats = {}
+
+    for t in transactions:
+        cust_id = t['CustomerID']
+        amount = t['Quantity'] * t['UnitPrice']
+        product = t['ProductName']
+
+        if cust_id not in customer_stats:
+            customer_stats[cust_id] = {
+                'total_spent': 0.0,
+                'purchase_count': 0,
+                'products_bought': set()
+            }
+
+        customer_stats[cust_id]['total_spent'] += amount
+        customer_stats[cust_id]['purchase_count'] += 1
+        customer_stats[cust_id]['products_bought'].add(product)
+
+    # Calculate average order value & convert products_bought to list
+    for cust_id in customer_stats:
+        stats = customer_stats[cust_id]
+        stats['avg_order_value'] = round(stats['total_spent'] / stats['purchase_count'], 2)
+        stats['products_bought'] = list(stats['products_bought'])
+
+    # Sort by total_spent descending
+    customer_stats = dict(sorted(customer_stats.items(), key=lambda x: x[1]['total_spent'], reverse=True))
+
+    return customer_stats
