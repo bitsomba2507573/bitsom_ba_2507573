@@ -219,3 +219,37 @@ def customer_analysis(transactions):
     customer_stats = dict(sorted(customer_stats.items(), key=lambda x: x[1]['total_spent'], reverse=True))
 
     return customer_stats
+
+
+def daily_sales_trend(transactions):
+    """
+    Analyzes sales trends by date
+    Returns: dictionary sorted by date
+    Format: {date: {'revenue': float, 'transaction_count': int, 'unique_customers': int}}
+    """
+    daily_stats = {}
+
+    for t in transactions:
+        date = t['Date']
+        revenue = t['Quantity'] * t['UnitPrice']
+        customer = t['CustomerID']
+
+        if date not in daily_stats:
+            daily_stats[date] = {
+                'revenue': 0.0,
+                'transaction_count': 0,
+                'unique_customers': set()
+            }
+
+        daily_stats[date]['revenue'] += revenue
+        daily_stats[date]['transaction_count'] += 1
+        daily_stats[date]['unique_customers'].add(customer)
+
+    # Convert unique_customers set to count
+    for date in daily_stats:
+        daily_stats[date]['unique_customers'] = len(daily_stats[date]['unique_customers'])
+
+    # Sort by date chronologically
+    daily_stats = dict(sorted(daily_stats.items(), key=lambda x: x[0]))
+
+    return daily_stats
