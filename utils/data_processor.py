@@ -312,3 +312,77 @@ def low_performing_products(transactions, threshold=10):
     low_products.sort(key=lambda x: x[1])
 
     return low_products
+
+
+def enrich_sales_data(transactions, product_mapping):
+    """
+    Enriches transaction data with API product information
+    """
+    enriched_transactions = []
+
+    for txn in transactions:
+        enriched_txn = txn.copy()
+
+        product_id_str = txn.get("ProductID", "")
+        api_category = None
+        api_brand = None
+        api_rating = None
+        api_match = False
+
+        try:
+            # Extract numeric ID (P101 -> 101)
+            numeric_id = int(product_id_str.replace("P", ""))
+
+            if numeric_id in product_mapping:
+                product_info = product_mapping[numeric_id]
+                api_category = product_info.get("category")
+                api_brand = product_info.get("brand")
+                api_rating = product_info.get("rating")
+                api_match = True
+
+        except Exception:
+            api_match = False
+
+        enriched_txn["API_Category"] = api_category
+        enriched_txn["API_Brand"] = api_brand
+        enriched_txn["API_Rating"] = api_rating
+        enriched_txn["API_Match"] = api_match
+
+        enriched_transactions.append(enriched_txn)
+
+    return enriched_transactions
+
+
+def save_enriched_data(enriched_transactions, filename="data/enriched_sales_data.txt"):
+    """
+    Saves enriched transactions to a pipe-delimited file
+    """
+    if not enriched_transactions:
+        print("No enriched data to save.")
+        return
+
+    headers = [
+        "TransactionID", "Date", "ProductID", "ProductName",
+        "Quantity", "UnitPrice", "CustomerID", "Region",
+        "API_Category", "API_Brand", "API_Rating", "API_Match"
+    ]
+
+    try:
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write("|".join(headers) + "\n")
+
+            for txn in enriched_transactions:
+                row = []
+                for h in headers:
+                    value = txn.get(h)
+                    if value is None:
+                        row.append("")
+                    else:
+                        row.append(str(value))
+                file.write("|".join(row) + "\n")
+
+        print(f"Enriched sales data saved to {filename}")
+
+    except Exception as e:
+        print("Error saving enriched data:", e)
+
