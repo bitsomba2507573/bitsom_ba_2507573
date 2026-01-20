@@ -1,8 +1,90 @@
 Total Transactions: 70
 Total Revenue: 3527808.0
 
-Region-wise Sales:
+Revenue by Region:
+South: 889332.0
+East: 467969.0
+North: 1321605.0
+West: 848902.0
+
+Region-wise Stats:
 South: {'total_sales': 889332.0, 'transaction_count': 13, 'percentage': 25.21}
 East: {'total_sales': 467969.0, 'transaction_count': 17, 'percentage': 13.27}
 North: {'total_sales': 1321605.0, 'transaction_count': 21, 'percentage': 37.46}
 West: {'total_sales': 848902.0, 'transaction_count': 19, 'percentage': 24.06}
+
+Top Products:
+('Mouse', 61, 40297.0)
+('Wireless Mouse', 45, 49981.0)
+('Webcam', 35, 128187.0)
+('USB Cable', 33, 7622.0)
+('Monitor', 30, 493759.0)
+
+Low Performing Products:
+('Laptop', 3, 184329.0)
+('KeyboardMechanical', 5, 13360.0)
+('WebcamHD', 6, 17862.0)
+('Laptop Charger65W', 7, 19922.0)
+('MouseWireless', 8, 6784.0)
+
+Customer Analysis:
+C004: {'total_spent': 857124.0, 'purchase_count': 3, 'products_bought': ['LaptopPremium', 'Laptop Charger', 'Headphones'], 'avg_order_value': 285708.0}
+C017: {'total_spent': 762460.0, 'purchase_count': 1, 'products_bought': ['LaptopPremium'], 'avg_order_value': 762460.0}
+C010: {'total_spent': 457186.0, 'purchase_count': 3, 'products_bought': ['External Hard Drive1TB', 'LaptopPremium', 'MouseWireless'], 'avg_order_value': 152395.33}
+C024: {'total_spent': 249451.0, 'purchase_count': 2, 'products_bought': ['Monitor', 'MonitorLED'], 'avg_order_value': 124725.5}
+C008: {'total_spent': 216176.0, 'purchase_count': 5, 'products_bought': ['Mouse', 'Wireless Mouse', 'Monitor', 'Laptop', 'Laptop Charger'], 'avg_order_value': 43235.2}
+C023: {'total_spent': 165391.0, 'purchase_count': 2, 'products_bought': ['Webcam', 'Monitor'], 'avg_order_value': 82695.5}
+C003: {'total_spent': 118144.0, 'purchase_count': 3, 'products_bought': ['Mouse', 'LaptopPremium', 'Wireless Mouse'], 'avg_order_value': 39381.33}
+C005: {'total_spent': 112405.0, 'purchase_count': 4, 'products_bought': ['Mouse', 'Monitor', 'Laptop Charger', 'Wireless MouseGaming'], 'avg_order_value': 28101.25}
+C013: {'total_spent': 75919.0, 'purchase_count': 3, 'products_bought': ['USB Cable', 'Webcam', 'Laptop'], 'avg_order_value': 25306.33}
+C009: {'total_spent': 64707.0, 'purchase_count': 6, 'products_bought': ['Mouse', 'Wireless Mouse', 'Headphones', 'WebcamHD', 'Keyboard', 'USB Cable'], 'avg_order_value': 10784.5}
+C007: {'total_spent': 57317.0, 'purchase_count': 4, 'products_bought': ['Mouse', 'USB Cable', 'Webcam', 'Wireless MouseGaming'], 'avg_order_value': 14329.25}
+C019: {'total_spent': 56358.0, 'purchase_count': 3, 'products_bought': ['MonitorLED', 'Mouse', 'Laptop Charger65W'], 'avg_order_value': 18786.0}
+C020: {'total_spent': 51695.0, 'purchase_count': 1, 'products_bought': ['Monitor'], 'avg_order_value': 51695.0}
+C028: {'total_spent': 48359.0, 'purchase_count': 2, 'products_bought': ['Keyboard', 'Headphones'], 'avg_order_value': 24179.5}
+C022: {'total_spent': 45778.0, 'purchase_count': 5, 'products_bought': ['USB Cable', 'Webcam', 'Laptop Charger', 'Wireless Mouse'], 'avg_order_value': 9155.6}
+C002: {'total_spent': 34218.0, 'purchase_count': 1, 'products_bought': ['External Hard Drive'], 'avg_order_value': 34218.0}
+C012: {'total_spent': 29735.0, 'purchase_count': 3, 'products_bought': ['USB Cable', 'Mouse', 'External Hard Drive'], 'avg_order_value': 9911.67}
+C006: {'total_spent': 24360.0, 'purchase_count': 1, 'products_bought': ['External Hard Drive1TB'], 'avg_order_value': 24360.0}
+C011: {'total_spent': 24144.0, 'purchase_count': 3, 'products_bought': ['Mouse', 'KeyboardMechanical', 'Wireless Mouse'], 'avg_order_value': 8048.0}
+C025: {'total_spent': 23148.0, 'purchase_count': 3, 'products_bought': ['Webcam', 'Mouse', 'Headphones'], 'avg_order_value': 7716.0}
+C001: {'total_spent': 11574.0, 'purchase_count': 1, 'products_bought': ['Webcam'], 'avg_order_value': 11574.0}
+C018: {'total_spent': 10152.0, 'purchase_count': 1, 'products_bought': ['Wireless Mouse'], 'avg_order_value': 10152.0}
+C026: {'total_spent': 10012.0, 'purchase_count': 2, 'products_bought': ['Laptop Charger', 'Mouse'], 'avg_order_value': 5006.0}
+C015: {'total_spent': 6330.0, 'purchase_count': 2, 'products_bought': ['Laptop Charger', 'Wireless Mouse'], 'avg_order_value': 3165.0}
+C029: {'total_spent': 6238.0, 'purchase_count': 3, 'products_bought': ['USB Cable', 'Webcam', 'Wireless Mouse'], 'avg_order_value': 2079.33}
+C030: {'total_spent': 4617.0, 'purchase_count': 1, 'products_bought': ['Wireless Mouse'], 'avg_order_value': 4617.0}
+C014: {'total_spent': 2560.0, 'purchase_count': 1, 'products_bought': ['MouseWireless'], 'avg_order_value': 2560.0}
+C027: {'total_spent': 2250.0, 'purchase_count': 1, 'products_bought': ['USB Cable'], 'avg_order_value': 2250.0}
+
+Daily Sales Trend:
+2024-12-01: {'revenue': 123969.0, 'transaction_count': 3, 'unique_customers': 2}
+2024-12-02: {'revenue': 882906.0, 'transaction_count': 5, 'unique_customers': 5}
+2024-12-03: {'revenue': 61851.0, 'transaction_count': 5, 'unique_customers': 5}
+2024-12-05: {'revenue': 257.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-06: {'revenue': 34072.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-07: {'revenue': 204912.0, 'transaction_count': 10, 'unique_customers': 7}
+2024-12-08: {'revenue': 70383.0, 'transaction_count': 3, 'unique_customers': 3}
+2024-12-09: {'revenue': 25339.0, 'transaction_count': 4, 'unique_customers': 4}
+2024-12-10: {'revenue': 1550.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-11: {'revenue': 13207.0, 'transaction_count': 2, 'unique_customers': 2}
+2024-12-13: {'revenue': 417923.0, 'transaction_count': 3, 'unique_customers': 3}
+2024-12-14: {'revenue': 45349.0, 'transaction_count': 2, 'unique_customers': 2}
+2024-12-15: {'revenue': 818960.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-16: {'revenue': 3020.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-17: {'revenue': 114356.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-18: {'revenue': 81284.0, 'transaction_count': 2, 'unique_customers': 1}
+2024-12-20: {'revenue': 594.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-21: {'revenue': 25992.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-22: {'revenue': 89645.0, 'transaction_count': 6, 'unique_customers': 6}
+2024-12-23: {'revenue': 768.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-24: {'revenue': 161907.0, 'transaction_count': 4, 'unique_customers': 4}
+2024-12-25: {'revenue': 30455.0, 'transaction_count': 4, 'unique_customers': 4}
+2024-12-26: {'revenue': 34218.0, 'transaction_count': 1, 'unique_customers': 1}
+2024-12-27: {'revenue': 119313.0, 'transaction_count': 2, 'unique_customers': 2}
+2024-12-29: {'revenue': 5608.0, 'transaction_count': 2, 'unique_customers': 2}
+2024-12-30: {'revenue': 159970.0, 'transaction_count': 3, 'unique_customers': 3}
+
+Peak Sales Day: ('2024-12-02', 882906.0, 5)
+
+Total API Products Fetched: 100

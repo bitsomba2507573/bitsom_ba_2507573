@@ -1,31 +1,32 @@
+# main.py
+
 from utils.file_handler import read_and_clean_sales_data
 from utils.data_processor import (
     validate_and_filter,
     calculate_total_revenue,
+    calculate_revenue_by_region,
     region_wise_sales,
     top_selling_products,
+    low_performing_products,
     customer_analysis,
     daily_sales_trend,
-    find_peak_sales_day,
-    low_performing_products
+    find_peak_sales_day
 )
+from utils.api_handler import fetch_all_products, create_product_mapping
 
 DATA_PATH = "data/sales_data.txt"
 OUTPUT_PATH = "output/final_summary.txt"
 
-
 def main():
-    # -------- Task 1.1 + 1.2: Read & Clean ----------
-    cleaned_data = read_and_clean_sales_data(DATA_PATH)
-
-    if not cleaned_data:
-        print("No valid data found.")
+    # -------- Task 1: Read & Clean Data --------
+    raw_data = read_and_clean_sales_data(DATA_PATH)
+    if not raw_data:
+        print("No valid data to process.")
         return
 
-    # -------- Convert to dictionaries ----------
-    transactions = []
-    for parts in cleaned_data:
-        transactions.append({
+    # Convert cleaned list of lists to dictionaries
+    transactions = [
+        {
             'TransactionID': parts[0],
             'Date': parts[1],
             'ProductID': parts[2],
@@ -34,69 +35,68 @@ def main():
             'UnitPrice': parts[5],
             'CustomerID': parts[6],
             'Region': parts[7]
-        })
-
+        }
+        for parts in raw_data
+    ]
     print(f"Valid records after parsing: {len(transactions)}")
 
-    # -------- Task 1.3: Validation & Filtering ----------
+    # -------- Task 1.3: Validate & Filter --------
     valid_transactions, invalid_count, summary = validate_and_filter(transactions)
-
     print(f"Invalid records removed during validation: {invalid_count}")
     print(f"Valid records after validation: {len(valid_transactions)}\n")
 
-    # -------- Task 2.1: Sales Summary ----------
+    # -------- Task 2.1 & 2.2: Sales Analysis --------
     total_revenue = calculate_total_revenue(valid_transactions)
-    region_sales = region_wise_sales(valid_transactions)
-
-    print("Total Revenue:", total_revenue)
-    print("Region-wise Sales:", region_sales, "\n")
-
-    # -------- Task 2.1(c): Top Selling Products ----------
+    region_sales = calculate_revenue_by_region(valid_transactions)
+    region_stats = region_wise_sales(valid_transactions)
     top_products = top_selling_products(valid_transactions)
-
-    print("Top Selling Products:")
-    for p in top_products:
-        print(p)
-    print()
-
-    # -------- Task 2.1(d): Customer Analysis ----------
-    customers = customer_analysis(valid_transactions)
-
-    print("Customer Purchase Analysis:")
-    for c, data in customers.items():
-        print(c, data)
-    print()
-
-    # -------- Task 2.2(a): Daily Sales Trend ----------
-    daily_trend = daily_sales_trend(valid_transactions)
-
-    print("Daily Sales Trend:")
-    for date, data in daily_trend.items():
-        print(date, data)
-    print()
-
-    # -------- Task 2.2(b): Peak Sales Day ----------
-    peak_day = find_peak_sales_day(valid_transactions)
-    print("Peak Sales Day:", peak_day, "\n")
-
-    # -------- Task 2.3(a): Low Performing Products ----------
     low_products = low_performing_products(valid_transactions)
+    customer_stats = customer_analysis(valid_transactions)
+    daily_trend = daily_sales_trend(valid_transactions)
+    peak_day = find_peak_sales_day(valid_transactions)
 
-    print("Low Performing Products:")
-    for p in low_products:
-        print(p)
+    print(f"Total Transactions: {len(valid_transactions)}")
+    print(f"Total Revenue: {total_revenue}\n")
+    print("Revenue by Region:", region_sales)
+    print("Region-wise Stats:", region_stats)
+    print("Top Products:", top_products)
+    print("Low Performing Products:", low_products)
+    print("Customer Analysis:", customer_stats)
+    print("Daily Sales Trend:", daily_trend)
+    print("Peak Sales Day:", peak_day)
 
-    # -------- Save Summary ----------
+    # -------- Task 3: API Product Info --------
+    api_products = fetch_all_products()
+    product_mapping = create_product_mapping(api_products)
+    print(f"Total API Products Fetched: {len(product_mapping)}")
+
+    # -------- Save Summary to File --------
     with open(OUTPUT_PATH, "w") as f:
         f.write(f"Total Transactions: {len(valid_transactions)}\n")
         f.write(f"Total Revenue: {total_revenue}\n\n")
-        f.write("Region-wise Sales:\n")
-        for region, data in region_sales.items():
-            f.write(f"{region}: {data}\n")
+        f.write("Revenue by Region:\n")
+        for region, revenue in region_sales.items():
+            f.write(f"{region}: {revenue}\n")
+        f.write("\nRegion-wise Stats:\n")
+        for region, stats in region_stats.items():
+            f.write(f"{region}: {stats}\n")
+        f.write("\nTop Products:\n")
+        for p in top_products:
+            f.write(f"{p}\n")
+        f.write("\nLow Performing Products:\n")
+        for p in low_products:
+            f.write(f"{p}\n")
+        f.write("\nCustomer Analysis:\n")
+        for c, stats in customer_stats.items():
+            f.write(f"{c}: {stats}\n")
+        f.write("\nDaily Sales Trend:\n")
+        for date, stats in daily_trend.items():
+            f.write(f"{date}: {stats}\n")
+        f.write(f"\nPeak Sales Day: {peak_day}\n")
+        f.write(f"\nTotal API Products Fetched: {len(product_mapping)}\n")
 
-    print("\nSummary saved to", OUTPUT_PATH)
+    print(f"\nSummary saved to {OUTPUT_PATH}")
     print("Sales report generated successfully.")
-
 
 if __name__ == "__main__":
     main()

@@ -1,41 +1,33 @@
-# Placeholder for API functions
-def fetch_product_info(product_id):
-    return {"name": "Example Product", "price": 100}
-
 import requests
 
 def fetch_all_products():
     """
-    Fetches all products from DummyJSON API
+    Fetches all products from DummyJSON API (limit=100)
     Returns: list of product dictionaries
     """
     url = "https://dummyjson.com/products?limit=100"
-
     try:
-        response = requests.get(url, timeout=10)
-
-        if response.status_code == 200:
-            data = response.json()
-            products = []
-
-            for p in data.get("products", []):
-                product = {
-                    "id": p.get("id"),
-                    "title": p.get("title"),
-                    "category": p.get("category"),
-                    "brand": p.get("brand"),
-                    "price": p.get("price"),
-                    "rating": p.get("rating")
-                }
-                products.append(product)
-
-            print(f"Successfully fetched {len(products)} products from API")
-            return products
-
-        else:
-            print("Failed to fetch products. Status code:", response.status_code)
-            return []
-
-    except requests.exceptions.RequestException as e:
-        print("API connection error:", e)
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print("Products fetched successfully")
+        return data.get('products', [])
+    except requests.RequestException as e:
+        print(f"Failed to fetch products: {e}")
         return []
+
+def create_product_mapping(api_products):
+    """
+    Creates a mapping of product IDs to product info
+    """
+    mapping = {}
+    for product in api_products:
+        mapping[product['id']] = {
+            'title': product.get('title', 'Unknown'),
+            'category': product.get('category', 'Unknown'),
+            'brand': product.get('brand', 'Unknown'),
+            'price': product.get('price', 0.0),
+            'rating': product.get('rating', 0.0)
+        }
+    print("Product mapping created successfully")
+    return mapping
